@@ -31,21 +31,46 @@ class dataextraction():
         except Exception as e:
             raise NetworkSecurityException(e, sys)
         
-    def csv2json(self):
+    def csv2json(self,file_path):
         try:
-            pass
+            data = pd.read_csv(file_path)
+            data.reset_index(drop=True, inplace=True)  
+            records = list(json.loads(data.T.to_json()).values())
+            return records
+
         except Exception as e:
             raise NetworkSecurityException(e, sys)
         
-    def data2mongodb(self):
+    def data2mongodb(self, records, database, collection):
         try:
-            pass
+            self.database = database 
+            self.collection = collection 
+            self.records = records 
+
+            self.mongo_client = pymongo.MongoClient(MONGO_DB_URL)
+
+            self.database = self.mongo_client[self.database]
+            self.collection = self.database[self.collection]
+
+            self.collection.insert_many(self.records)
+
+            return len(self.records)
+        
+
         except Exception as e:
             raise NetworkSecurityException(e, sys)
         
 
-    if __name__ == '__main__':
-        pass
+
+if __name__ == '__main__':
+    FILE_PATH = r"D:\projects\network_security\Data\NetworkData.csv"
+    DATABASE = "PersonalProject"
+    COLLECTION = "NetworkData"
+    network_data = dataextraction()
+    records = network_data.csv2json(FILE_PATH)
+    numrecords = network_data.data2mongodb(records, DATABASE, COLLECTION)
+    print(numrecords)
+        
 
 
     
