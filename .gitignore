@@ -1,2 +1,5 @@
 environment
 .env
+networksecurity.egg-info
+Artifacts
+logs
