@@ -56,7 +56,7 @@ def load_numpy_array_data(file_path: str) -> np.array:
         raise NetworkSecurityException(e, sys) from e
 
 
-def save_object():
+def save_object(file_path: str, obj: object) -> None:
     try:
         logging.info("Entered the save_object method of MainUtils class")
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
