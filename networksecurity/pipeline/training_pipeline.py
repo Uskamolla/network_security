@@ -68,11 +68,11 @@ class TrainingPipeline:
         except Exception as e:
             raise NetworkSecurityException(e, sys)
         
-    def model_training(self, data_transformation__artifact:DataTransformationArtifact)->ModelTrainerArtifact:
+    def model_training(self, data_transformation_artifact:DataTransformationArtifact)->ModelTrainerArtifact:
 
         try:
             self.model_trainer_config: ModelTrainerConfig = ModelTrainerConfig(training_pipeline_config=self.training_pipeline_config)
-            model_trainer = ModelTrainer(data_transformation__artifact = data_transformation__artifact, model_training_config = self.model_trainer_config)
+            model_trainer = ModelTrainer(data_transformation_artifact = data_transformation_artifact, model_trainer_config = self.model_trainer_config)
             model_trainer_artifact = model_trainer.initiate_model_trainer()
             return model_trainer_artifact
         except Exception as e:
@@ -98,7 +98,7 @@ class TrainingPipeline:
             print(data_validation_artifact)
             data_transformation_artifact = self.data_transformation(data_validation_artifact=data_validation_artifact)
             print(data_transformation_artifact)
-            model_training_artifact = self.model_trainnig(data_transformation_artifact = data_transformation_artifact)
+            model_training_artifact = self.model_training(data_transformation_artifact = data_transformation_artifact)
             print(model_training_artifact)
         except Exception as e:
             raise NetworkSecurityException(e, sys)

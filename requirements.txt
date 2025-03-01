@@ -9,5 +9,6 @@ dill
 pickel
 pyyaml
 xgboost
+mlflow
 
 -e .
