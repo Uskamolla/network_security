@@ -83,7 +83,7 @@ class TrainingPipeline:
             self.model_evaluation_config: ModelEvaluationConfig = ModelEvaluationConfig(training_pipeline_config = self.training_pipeline_config)
             model_eval = ModelEvaluation(model_trainer_artifact = model_training_artifact, 
                             data_validation_artifact = data_validation_artifact, 
-                            model_evaluation_config = self.model_evaluation_config)
+                            model_eval_config = self.model_evaluation_config)
             model_eval_artifact = model_eval.initiate_model_evaluation()
             return model_eval_artifact
 
@@ -106,8 +106,9 @@ class TrainingPipeline:
             print(data_transformation_artifact)
             model_training_artifact = self.model_training(data_transformation_artifact = data_transformation_artifact)
             print(model_training_artifact)
-            model_evaluation_artifact = self.model_evaluation(model_training_artifact = model_training_artifact)
+            model_evaluation_artifact = self.model_evaluation(data_validation_artifact=data_validation_artifact, model_training_artifact = model_training_artifact)
             print(model_evaluation_artifact)
+            # model
         except Exception as e:
             raise NetworkSecurityException(e, sys)
         
