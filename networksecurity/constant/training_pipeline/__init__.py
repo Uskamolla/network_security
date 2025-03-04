@@ -75,8 +75,16 @@ MODEL_TRAINER_EXPECTED_SCORE: float = 0.6
 MODEL_TRAINER_OVER_FIITING_UNDER_FITTING_THRESHOLD: float = 0.05
 
 """
-Model Evalaution ralated constant start with MODE TRAINER VAR NAME
+Model Evalaution ralated constant start with MODE EVALUATION VAR NAME
 """
 MODEL_EVALUATION_DIR_NAME: str = "model_evaluation"
 MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02
 MODEL_EVALUATION_REPORT_NAME= "report.yaml"
+
+
+"""
+Model pusher related constant start with MODEL PUSHER VAR NAME
+"""
+
+MODEL_PUSHER_DIR_NAME = "model_pusher"
+MODEL_PUSHER_SAVED_MODEL_DIR = SAVED_MODEL_DIR
