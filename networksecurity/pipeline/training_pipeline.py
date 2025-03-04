@@ -92,7 +92,7 @@ class TrainingPipeline:
         
     def model_pusher(self,model_eval_artifact:ModelEvaluationArtifact):
         try:
-            model_pusher_config = ModelPusherConfig(training_pipeline_config =TrainingPipelineConfig)
+            model_pusher_config = ModelPusherConfig(training_pipeline_config =self.training_pipeline_config)
             model_pusher = ModelPusher(model_pusher_config, model_eval_artifact)
             model_pusher_artifact = model_pusher.initiate_model_pusher()
             return model_pusher_artifact
@@ -111,7 +111,7 @@ class TrainingPipeline:
             print(model_training_artifact)
             model_evaluation_artifact = self.model_evaluation(data_validation_artifact=data_validation_artifact, model_training_artifact = model_training_artifact)
             print(model_evaluation_artifact)
-            model_pusher_artifact = self.model_pusher(model_evaluation_artifact)
+            model_pusher_artifact = self.model_pusher(model_eval_artifact=model_evaluation_artifact)
             print(model_pusher_artifact)
         except Exception as e:
             raise NetworkSecurityException(e, sys)

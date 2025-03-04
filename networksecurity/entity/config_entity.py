@@ -84,8 +84,7 @@ class ModelEvaluationConfig:
         
 
 class ModelPusherConfig:
-    def __init__(self,training_pipeline_config: TrainingPipelineConfig):
-        
+      def __init__(self,training_pipeline_config:TrainingPipelineConfig):
         self.model_evaluation_dir: str = os.path.join(
             training_pipeline_config.artifact_dir, training_pipeline.MODEL_PUSHER_DIR_NAME
         )
