@@ -88,3 +88,10 @@ Model pusher related constant start with MODEL PUSHER VAR NAME
 
 MODEL_PUSHER_DIR_NAME = "model_pusher"
 MODEL_PUSHER_SAVED_MODEL_DIR = SAVED_MODEL_DIR
+
+"""
+Constants related to AWS configuration
+
+"""
+TRAINING_BUCKET_NAME = "network-security2"
+PREDICTION_BUCKET_NAME = "Network-dataSource"
