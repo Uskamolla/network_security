@@ -43,17 +43,17 @@ collection = database[DATA_INGESTION_COLLECTION_NAME]
 app = FastAPI()
 origins = ["*"]
 
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=origins,
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
-# )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-# @app.get("/", tags=["authentication"])
-# async def index():
-#     return RedirectResponse(url="/docs")
+@app.get("/", tags=["authentication"])
+async def index():
+    return RedirectResponse(url="/docs")
 
 @app.get("/train")
 async def train_route():
@@ -74,14 +74,7 @@ async def predict_route(request:Request,file: UploadFile = File(...)):
     except Exception as e:
             raise NetworkSecurityException(e,sys)
 
-def main():
-    try:
-        set_env_variable(env_file_path)
-        training_pipeline = TrainPipeline()
-        training_pipeline.run_pipeline() 
-    except Exception as e:
-            raise NetworkSecurityException(e,sys)
-'''
+
 
 def main():
     try:
@@ -90,7 +83,7 @@ def main():
         
     except Exception as e:
             raise NetworkSecurityException(e,sys)
-     
+'''
                
 if __name__=="__main__":
-    app_run(app, host="localhost", port=APP_PORT)
+    app_run(app, host="localhost", port=8000)
