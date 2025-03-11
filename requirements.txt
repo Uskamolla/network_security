@@ -14,5 +14,7 @@ fastapi
 uvicorn
 ipykernel
 apache-airflow
+mlflow
+dvc
 
 -e .
