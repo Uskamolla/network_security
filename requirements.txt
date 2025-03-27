@@ -6,7 +6,7 @@ certifi
 pymongo[srv]
 scikit-learn
 dill
-pickel
+pickle
 pyyaml
 xgboost
 mlflow
